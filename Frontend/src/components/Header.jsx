@@ -1,6 +1,28 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getAllCategories } from '../services/categoryService'
 
 function Header() {
+  const [categories, setCategories] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    async function loadCategories() {
+      try {
+        const data = await getAllCategories()
+        setCategories(data)
+      } catch (err) {
+        console.error(err)
+        setError(true)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadCategories()
+  }, [])
+
   return (
     <header className="site-header border-bottom">
       <div className="container py-3">
@@ -19,6 +41,7 @@ function Header() {
               <label htmlFor="artisan-search" className="visually-hidden">
                 Rechercher un artisan
               </label>
+
               <div className="input-group">
                 <input
                   id="artisan-search"
@@ -38,18 +61,21 @@ function Header() {
               className="category-nav d-flex flex-wrap justify-content-lg-end gap-2"
               aria-label="Catégories principales"
             >
-              <Link className="btn btn-outline-secondary btn-sm" to="/categorie/batiment">
-                Bâtiment
-              </Link>
-              <Link className="btn btn-outline-secondary btn-sm" to="/categorie/services">
-                Services
-              </Link>
-              <Link className="btn btn-outline-secondary btn-sm" to="/categorie/fabrication">
-                Fabrication
-              </Link>
-              <Link className="btn btn-outline-secondary btn-sm" to="/categorie/alimentation">
-                Alimentation
-              </Link>
+              {loading && <span>Chargement...</span>}
+
+              {error && <span>Catégories indisponibles</span>}
+
+              {!loading &&
+                !error &&
+                categories.map((category) => (
+                  <Link
+                    key={category.id}
+                    className="btn btn-outline-secondary btn-sm"
+                    to={`/categorie/${category.slug}`}
+                  >
+                    {category.name}
+                  </Link>
+                ))}
             </nav>
           </div>
         </div>
