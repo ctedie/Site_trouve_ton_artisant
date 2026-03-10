@@ -1,23 +1,30 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import ArtisanCard from '../components/ArtisanCard'
 import Seo from '../components/Seo'
-import { getArtisansByCategory } from '../services/artisanService'
+import { searchArtisansByName } from '../services/artisanService'
 
-function CategoryPage() {
-  const { slug } = useParams()
+function SearchPage() {
+  const [searchParams] = useSearchParams()
+  const query = searchParams.get('query') || ''
 
   const [artisans, setArtisans] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
   useEffect(() => {
-    async function loadArtisans() {
+    async function loadResults() {
+      if (!query.trim()) {
+        setArtisans([])
+        setLoading(false)
+        return
+      }
+
       try {
         setLoading(true)
         setError(false)
 
-        const data = await getArtisansByCategory(slug)
+        const data = await searchArtisansByName(query)
         setArtisans(data)
       } catch (err) {
         console.error(err)
@@ -27,27 +34,29 @@ function CategoryPage() {
       }
     }
 
-    loadArtisans()
-  }, [slug])
+    loadResults()
+  }, [query])
 
   return (
     <>
       <Seo
-        title={`Artisans ${slug} | Trouve ton artisan`}
-        description={`Découvrez les artisans de la catégorie ${slug}.`}
+        title={`Recherche : ${query} | Trouve ton artisan`}
+        description={`Résultats de recherche pour ${query} sur Trouve ton artisan.`}
       />
 
       <div className="container py-5">
         <header className="mb-4">
-          <h1 className="fw-bold text-capitalize">Artisans : {slug}</h1>
-          <p>Découvrez les artisans spécialisés dans cette catégorie.</p>
+          <h1 className="fw-bold">Résultats de recherche</h1>
+          <p className="mb-0">
+            Recherche en cours pour : <strong>{query}</strong>
+          </p>
         </header>
 
-        {loading && <p>Chargement des artisans...</p>}
-        {error && <p>Une erreur est survenue lors du chargement.</p>}
+        {loading && <p>Chargement des résultats...</p>}
+        {error && <p>Une erreur est survenue lors de la recherche.</p>}
 
         {!loading && !error && artisans.length === 0 && (
-          <p>Aucun artisan trouvé dans cette catégorie.</p>
+          <p>Aucun artisan trouvé pour cette recherche.</p>
         )}
 
         {!loading && !error && artisans.length > 0 && (
@@ -64,4 +73,4 @@ function CategoryPage() {
   )
 }
 
-export default CategoryPage
+export default SearchPage
