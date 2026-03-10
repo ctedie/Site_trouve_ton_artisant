@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout'
-import HomePage from '../pages/HomePage'
+import HomePage from '../pages/Homepage'
 import CategoryPage from '../pages/CategoryPage'
 import ArtisanPage from '../pages/ArtisanPage'
 import LegalPage from '../pages/LegalPage'
