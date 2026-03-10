@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ContactForm from '../components/ContactForm'
+import RatingStars from '../components/RatingStars'
+import Seo from '../components/Seo'
 import { getArtisanById } from '../services/artisanService'
 
 function ArtisanPage() {
@@ -47,23 +49,54 @@ function ArtisanPage() {
   }
 
   return (
-    <div className="container py-5">
-      <div className="row g-5">
-        <div className="col-12 col-lg-6">
-          <h1 className="fw-bold mb-3">{artisan.name}</h1>
+    <>
+      <Seo
+        title={`${artisan.name} | Trouve ton artisan`}
+        description={`Découvrez ${artisan.name}, ${artisan.specialty} à ${artisan.city}.`}
+      />
 
-          <p><strong>Spécialité :</strong> {artisan.specialty}</p>
-          <p><strong>Ville :</strong> {artisan.city}</p>
-          <p><strong>Note :</strong> {artisan.rating}/5</p>
-          <p className="mt-3">{artisan.description}</p>
-        </div>
+      <div className="container py-5">
+        <div className="row g-5">
+          <div className="col-12 col-lg-6">
+            <div className="artisan-detail__image-wrapper mb-4">
+              <img
+                src={artisan.imageUrl}
+                alt={artisan.name}
+                className="img-fluid rounded-4 shadow-sm artisan-detail__image"
+              />
+            </div>
 
-        <div className="col-12 col-lg-6">
-          <h2 className="h4 mb-3">Contacter cet artisan</h2>
-          <ContactForm artisan={artisan} />
+            <h1 className="fw-bold mb-3">{artisan.name}</h1>
+
+            <div className="mb-3">
+              <RatingStars rating={artisan.rating} />
+            </div>
+
+            <p><strong>Spécialité :</strong> {artisan.specialty}</p>
+            <p><strong>Localisation :</strong> {artisan.city}</p>
+
+            <section className="mt-4">
+              <h2 className="h4">À propos</h2>
+              <p>{artisan.about}</p>
+            </section>
+
+            {artisan.website && (
+              <p className="mt-4">
+                <strong>Site web :</strong>{' '}
+                <a href={artisan.website} target="_blank" rel="noreferrer">
+                  Visiter le site
+                </a>
+              </p>
+            )}
+          </div>
+
+          <div className="col-12 col-lg-6">
+            <h2 className="h4 mb-3">Contacter cet artisan</h2>
+            <ContactForm artisan={artisan} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

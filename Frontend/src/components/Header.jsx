@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getAllCategories } from '../services/categoryService'
 
@@ -6,6 +6,9 @@ function Header() {
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function loadCategories() {
@@ -23,6 +26,19 @@ function Header() {
     loadCategories()
   }, [])
 
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    const trimmedValue = searchTerm.trim()
+
+    if (!trimmedValue) {
+      return
+    }
+
+    navigate(`/recherche?query=${encodeURIComponent(trimmedValue)}`)
+    setSearchTerm('')
+  }
+
   return (
     <header className="site-header border-bottom">
       <div className="container py-3">
@@ -37,7 +53,7 @@ function Header() {
           </div>
 
           <div className="col-12 col-lg-4">
-            <form className="search-form" role="search">
+            <form className="search-form" role="search" onSubmit={handleSubmit}>
               <label htmlFor="artisan-search" className="visually-hidden">
                 Rechercher un artisan
               </label>
@@ -48,6 +64,8 @@ function Header() {
                   type="search"
                   className="form-control"
                   placeholder="Rechercher un artisan"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <button type="submit" className="btn btn-primary">
                   Rechercher
@@ -62,7 +80,6 @@ function Header() {
               aria-label="Catégories principales"
             >
               {loading && <span>Chargement...</span>}
-
               {error && <span>Catégories indisponibles</span>}
 
               {!loading &&
