@@ -5,10 +5,52 @@ body {
   color: #222222;
 }
 
-main {
-  min-height: 70vh;
-}
-
 a {
   text-decoration: none;
+}
+
+.site-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main {
+  flex: 1;
+}
+
+.site-header {
+  background-color: #ffffff;
+}
+
+.site-brand {
+  text-decoration: none;
+}
+
+.site-brand__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.site-brand__subtitle {
+  font-size: 0.95rem;
+  color: #666666;
+  margin-top: 0.25rem;
+}
+
+.category-nav a {
+  white-space: nowrap;
+}
+
+.site-footer {
+  background-color: #f8f9fa;
+}
+
+.site-footer a {
+  color: inherit;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
 }
