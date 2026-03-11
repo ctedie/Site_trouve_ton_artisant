@@ -1,104 +1,115 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #222222;
-}
-
-a {
-  text-decoration: none;
-}
-
-.site-wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.site-main {
-  flex: 1;
-}
-
 .site-header {
-  background-color: #ffffff;
+  background-color: #f1f8fc;
+  border-bottom: 1px solid rgba(56, 64, 80, 0.1);
 }
 
-.site-brand {
-  text-decoration: none;
-}
-
-.site-brand__title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.site-brand__subtitle {
-  font-size: 0.95rem;
-  color: #666666;
-  margin-top: 0.25rem;
+.site-brand__logo {
+  display: block;
+  max-width: 250px;
+  height: auto;
 }
 
 .category-nav a {
-  white-space: nowrap;
+  color: #384050;
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
-.site-footer {
-  background-color: #f8f9fa;
+.category-nav a:hover {
+  color: #00497c;
 }
 
-.site-footer a {
-  color: inherit;
+.search-form__wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #384050;
+  border-radius: 999px;
+  overflow: hidden;
+  background-color: #ffffff;
 }
 
-.site-footer a:hover {
-  text-decoration: underline;
+.search-form__wrapper .form-control {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.search-form__wrapper .form-control:focus {
+  box-shadow: none;
+}
+
+.search-form__button {
+  border: none;
+  background: transparent;
+  padding: 0 1rem;
+  color: #384050;
+  cursor: pointer;
 }
 
 .hero-section {
-  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+  min-height: 430px;
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
 }
 
-.hero-section__panel {
-  background-color: #ffffff;
-  border: 1px solid #e9ecef;
-}
-
-.step-card__number {
-  width: 48px;
-  height: 48px;
-  display: inline-flex;
+.hero-section__overlay {
+  min-height: 390px;
+  background: linear-gradient(
+    90deg,
+    rgba(56, 64, 80, 0.72) 0%,
+    rgba(56, 64, 80, 0.45) 45%,
+    rgba(56, 64, 80, 0.12) 100%
+  );
+  display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  font-weight: 700;
-  background-color: #0d6efd;
+}
+
+.hero-section__container {
+  width: 100%;
+}
+
+.hero-section__content {
+  max-width: 470px;
+  color: #ffffff;
+  padding: 2rem 0;
+}
+
+.hero-section__title {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 1rem;
   color: #ffffff;
 }
 
-.artisan-card .card-text {
-  color: #555555;
+.hero-section__text {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
 }
 
-.rating-stars {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.1rem;
-  font-size: 1rem;
+.hero-section__button {
+  padding: 0.65rem 1.4rem;
+  font-size: 0.9rem;
 }
 
-.rating-stars__star {
-  color: #f4b400;
-}
+@media (max-width: 767px) {
+  .hero-section,
+  .hero-section__overlay {
+    min-height: 320px;
+  }
 
-.artisan-detail__image-wrapper {
-  background-color: #f8f9fa;
-  border-radius: 1rem;
-  overflow: hidden;
-}
+  .hero-section__content {
+    max-width: 100%;
+    text-align: left;
+  }
 
-.artisan-detail__image {
-  width: 100%;
-  max-height: 360px;
-  object-fit: cover;
+  .hero-section__title {
+    font-size: 1.5rem;
+  }
+
+  .hero-section__text {
+    font-size: 0.9rem;
+  }
 }
