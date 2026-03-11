@@ -1,0 +1,39 @@
+.top-artisans-section {
+  padding: 70px 0;
+  background-color: var(--color-bg-soft);
+}
+
+.artisan-card {
+  background-color: var(--color-text-dark);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--shadow-soft);
+}
+
+.artisan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.artisan-card .card-body {
+  padding: 1.5rem;
+}
+
+.artisan-card .card-title,
+.artisan-card p,
+.artisan-card strong {
+  color: var(--color-white);
+}
+
+.artisan-card .btn-outline-primary {
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.artisan-card .btn-outline-primary:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}

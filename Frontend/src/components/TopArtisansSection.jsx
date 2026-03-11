@@ -27,14 +27,10 @@ function TopArtisansSection() {
   }, [])
 
   return (
-    <section id="artisans-du-mois" className="py-5">
+    <section id="artisans-du-mois" className="top-artisans-section">
       <div className="container">
         <div className="mb-4 text-center">
-          <p className="text-uppercase fw-semibold mb-2">Sélection</p>
           <h2 className="fw-bold">Les artisans du mois</h2>
-          <p className="mb-0">
-            Trois professionnels mis en avant pour la qualité de leur travail.
-          </p>
         </div>
 
         {loading && <p>Chargement des artisans...</p>}

@@ -1,0 +1,14 @@
+.site-footer {
+  background-color: var(--color-text-dark);
+  color: var(--color-white);
+  margin-top: 4rem;
+}
+
+.site-footer a {
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.site-footer a:hover {
+  color: var(--color-bg-soft);
+}

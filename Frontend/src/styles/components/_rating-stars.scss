@@ -1,0 +1,10 @@
+.rating-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+  font-size: 1rem;
+}
+
+.rating-stars__star {
+  color: var(--color-accent-green);
+}
