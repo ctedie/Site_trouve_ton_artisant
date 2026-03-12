@@ -14,11 +14,10 @@ function AppRouter() {
         <Route index element={<HomePage />} />
         <Route path="categorie/:slug" element={<CategoryPage />} />
         <Route path="artisan/:id" element={<ArtisanPage />} />
-        <Route path="mentions-legales" element={<LegalPage title="Mentions légales" />} />
-        <Route path="donnees-personnelles" element={<LegalPage title="Données personnelles" />} />
-        <Route path="accessibilite" element={<LegalPage title="Accessibilité" />} />
-        <Route path="cookies" element={<LegalPage title="Cookies" />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="mentions-legales" element={<LegalPage />} />
+        <Route path="donnees-personnelles" element={<LegalPage />} />
+        <Route path="accessibilite" element={<LegalPage />} />
+        <Route path="cookies" element={<LegalPage />} />        <Route path="*" element={<NotFoundPage />} />
         <Route path="recherche" element={<SearchPage />} />
       </Route>
     </Routes>
