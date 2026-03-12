@@ -42,60 +42,78 @@ function Header() {
 
   return (
     <header className="site-header">
-      <div className="container py-3">
-        <div className="row g-3 align-items-center">
-          <div className="col-12 col-lg-3">
-            <Link to="/" className="site-brand d-inline-block" aria-label="Retour à l’accueil">
-              <img
-                src={logo}
-                alt="Trouve ton artisan"
-                className="site-brand__logo"
-              />
-            </Link>
-          </div>
+      <nav className="navbar navbar-expand-lg">
+        <div className="container">
+          <Link to="/" className="navbar-brand site-brand" aria-label="Retour à l’accueil">
+            <img
+              src={logo}
+              alt="Trouve ton artisan"
+              className="site-brand__logo"
+            />
+          </Link>
 
-          <div className="col-12 col-lg-5">
-            <nav
-              className="category-nav d-flex flex-wrap justify-content-center gap-3"
-              aria-label="Catégories principales"
-            >
-              {loading && <span>Chargement...</span>}
+          <button
+            className="navbar-toggler site-header__toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Ouvrir le menu"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
-              {error && <span>Catégories indisponibles</span>}
+          <div className="collapse navbar-collapse" id="mainNavbar">
+            <div className="site-header__content ms-auto">
+              <nav
+                className="category-nav navbar-nav flex-lg-row flex-column align-items-lg-center gap-lg-3"
+                aria-label="Catégories principales"
+              >
+                {loading && <span>Chargement...</span>}
 
-              {!loading &&
-                !error &&
-                categories.map((category) => (
-                  <Link key={category.id} to={`/categorie/${category.slug}`}>
-                    {category.name}
-                  </Link>
-                ))}
-            </nav>
-          </div>
+                {error && <span>Catégories indisponibles</span>}
 
-          <div className="col-12 col-lg-4">
-            <form className="search-form" role="search" onSubmit={handleSubmit}>
-              <label htmlFor="artisan-search" className="visually-hidden">
-                Rechercher un artisan
-              </label>
+                {!loading &&
+                  !error &&
+                  categories.map((category) => (
+                    <Link
+                      key={category.id}
+                      to={`/categorie/${category.slug}`}
+                      className="nav-link"
+                    >
+                      {category.name}
+                    </Link>
+                  ))}
+              </nav>
 
-              <div className="search-form__wrapper">
-                <input
-                  id="artisan-search"
-                  type="search"
-                  className="form-control"
-                  placeholder="Rechercher un artisan..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button type="submit" className="search-form__button">
-                  🔍
-                </button>
-              </div>
-            </form>
+              <form
+                className="search-form ms-lg-4 mt-3 mt-lg-0"
+                role="search"
+                onSubmit={handleSubmit}
+              >
+                <label htmlFor="artisan-search" className="visually-hidden">
+                  Rechercher un artisan
+                </label>
+
+                <div className="search-form__wrapper">
+                  <input
+                    id="artisan-search"
+                    type="search"
+                    className="form-control"
+                    placeholder="Rechercher un artisan..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                  <button type="submit" className="search-form__button">
+                    🔍
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   )
 }
