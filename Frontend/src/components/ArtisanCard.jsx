@@ -24,11 +24,11 @@ function ArtisanCard({ artisan }) {
         </div>
 
         <p>
-          <strong>Spécialité :</strong> {artisan.specialty}
+          <strong>Spécialité :</strong> {artisan.Specialty?.name}
         </p>
 
         <p>
-          <strong>Localisation :</strong> {artisan.city}
+          <strong>Localisation :</strong> {artisan.location}
         </p>
       </div>
 

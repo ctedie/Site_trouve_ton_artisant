@@ -80,10 +80,10 @@ function ArtisanPage() {
 
                 <ul className="artisan-detail__meta">
                   <li>
-                    <strong>Spécialité :</strong> {artisan.specialty}
+                    <strong>Spécialité :</strong> {artisan.Specialty?.name}
                   </li>
                   <li>
-                    <strong>Localisation :</strong> {artisan.city}
+                    <strong>Localisation :</strong> {artisan.location}
                   </li>
                 </ul>
 
