@@ -52,7 +52,7 @@ function ArtisanPage() {
     <>
       <Seo
         title={`${artisan.name} | Trouve ton artisan`}
-        description={`Découvrez ${artisan.name}, ${artisan.specialty} à ${artisan.city}.`}
+        description={`Découvrez ${artisan.name}, ${artisan.Specialty?.name} à ${artisan.location}.`}
       />
 
       <section className="artisan-detail">
