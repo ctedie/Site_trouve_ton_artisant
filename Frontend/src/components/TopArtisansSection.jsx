@@ -27,23 +27,24 @@ function TopArtisansSection() {
   }, [])
 
   return (
-    <section id="artisans-du-mois" className="py-5">
+    <section id="artisans-du-mois" className="top-artisans-section">
       <div className="container">
-        <div className="mb-4 text-center">
-          <p className="text-uppercase fw-semibold mb-2">Sélection</p>
-          <h2 className="fw-bold">Les artisans du mois</h2>
-          <p className="mb-0">
-            Trois professionnels mis en avant pour la qualité de leur travail.
+        <header className="top-artisans-section__header">
+          <p className="top-artisans-section__eyebrow">Sélection</p>
+          <h2>Les artisans du mois</h2>
+          <p className="top-artisans-section__intro">
+            Découvrez trois professionnels mis en avant pour la qualité de leur
+            savoir-faire et leur engagement.
           </p>
-        </div>
+        </header>
 
-        {loading && <p>Chargement des artisans...</p>}
-        {error && <p>Impossible de charger les artisans du mois.</p>}
+        {loading && <p className="text-center">Chargement des artisans...</p>}
+        {error && <p className="text-center">Impossible de charger les artisans du mois.</p>}
 
         {!loading && !error && artisans.length > 0 && (
-          <div className="row g-4">
+          <div className="row g-4 justify-content-center">
             {artisans.map((artisan) => (
-              <div key={artisan.id} className="col-12 col-md-6 col-lg-4">
+              <div key={artisan.id} className="col-12 col-md-6 col-lg-4 d-flex">
                 <ArtisanCard artisan={artisan} />
               </div>
             ))}

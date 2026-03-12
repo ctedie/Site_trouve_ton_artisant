@@ -3,29 +3,37 @@ import RatingStars from './RatingStars'
 
 function ArtisanCard({ artisan }) {
   return (
-    <article className="artisan-card card h-100 shadow-sm border-0 rounded-4">
-      <div className="card-body p-4">
-        <p className="text-uppercase small fw-semibold mb-2">
+    <article className="artisan-card card h-100 border-0">
+      <div className="artisan-card__image-wrapper">
+        <img
+          src={artisan.imageUrl || '/images/artisans/default.png'}
+          alt={artisan.name}
+          className="artisan-card__image"
+        />
+      </div>
+
+      <div className="card-body">
+        <p className="artisan-card__category">
           {artisan.categoryName || artisan.category}
         </p>
 
-        <h3 className="h5 card-title mb-2">{artisan.name}</h3>
+        <h3 className="h5 card-title">{artisan.name}</h3>
 
-        <div className="mb-3">
+        <div className="artisan-card__rating">
           <RatingStars rating={artisan.rating} />
         </div>
 
-        <p className="mb-2">
-          <strong>Spécialité :</strong> {artisan.specialty}
+        <p>
+          <strong>Spécialité :</strong> {artisan.Specialty?.name}
         </p>
 
-        <p className="mb-0">
-          <strong>Localisation :</strong> {artisan.city}
+        <p>
+          <strong>Localisation :</strong> {artisan.location}
         </p>
       </div>
 
-      <div className="card-footer bg-white border-0 pt-0 px-4 pb-4">
-        <Link to={`/artisan/${artisan.id}`} className="btn btn-outline-primary w-100">
+      <div className="artisan-card__footer">
+        <Link to={`/artisan/${artisan.id}`} className="artisan-card__button">
           Voir la fiche
         </Link>
       </div>

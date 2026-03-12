@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getAllCategories } from '../services/categoryService'
+import logo from '../assets/images/logo.png'
 
 function Header() {
   const [categories, setCategories] = useState([])
@@ -40,63 +41,79 @@ function Header() {
   }
 
   return (
-    <header className="site-header border-bottom">
-      <div className="container py-3">
-        <div className="row g-3 align-items-center">
-          <div className="col-12 col-lg-4">
-            <Link to="/" className="site-brand text-dark d-inline-block">
-              <span className="site-brand__title d-block">Trouve ton artisan</span>
-              <span className="site-brand__subtitle d-block">
-                La plateforme des artisans de confiance
-              </span>
-            </Link>
-          </div>
+    <header className="site-header">
+      <nav className="navbar navbar-expand-lg">
+        <div className="container">
+          <Link to="/" className="navbar-brand site-brand" aria-label="Retour à l’accueil">
+            <img
+              src={logo}
+              alt="Trouve ton artisan"
+              className="site-brand__logo"
+            />
+          </Link>
 
-          <div className="col-12 col-lg-4">
-            <form className="search-form" role="search" onSubmit={handleSubmit}>
-              <label htmlFor="artisan-search" className="visually-hidden">
-                Rechercher un artisan
-              </label>
+          <button
+            className="navbar-toggler site-header__toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Ouvrir le menu"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
-              <div className="input-group">
-                <input
-                  id="artisan-search"
-                  type="search"
-                  className="form-control"
-                  placeholder="Rechercher un artisan"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button type="submit" className="btn btn-primary">
-                  Rechercher
-                </button>
-              </div>
-            </form>
-          </div>
+          <div className="collapse navbar-collapse" id="mainNavbar">
+            <div className="site-header__content ms-auto">
+              <nav
+                className="category-nav navbar-nav flex-lg-row flex-column align-items-lg-center gap-lg-3"
+                aria-label="Catégories principales"
+              >
+                {loading && <span>Chargement...</span>}
 
-          <div className="col-12 col-lg-4">
-            <nav
-              className="category-nav d-flex flex-wrap justify-content-lg-end gap-2"
-              aria-label="Catégories principales"
-            >
-              {loading && <span>Chargement...</span>}
-              {error && <span>Catégories indisponibles</span>}
+                {error && <span>Catégories indisponibles</span>}
 
-              {!loading &&
-                !error &&
-                categories.map((category) => (
-                  <Link
-                    key={category.id}
-                    className="btn btn-outline-secondary btn-sm"
-                    to={`/categorie/${category.slug}`}
-                  >
-                    {category.name}
-                  </Link>
-                ))}
-            </nav>
+                {!loading &&
+                  !error &&
+                  categories.map((category) => (
+                    <Link
+                      key={category.id}
+                      to={`/categorie/${category.slug}`}
+                      className="nav-link"
+                    >
+                      {category.name}
+                    </Link>
+                  ))}
+              </nav>
+
+              <form
+                className="search-form ms-lg-4 mt-3 mt-lg-0"
+                role="search"
+                onSubmit={handleSubmit}
+              >
+                <label htmlFor="artisan-search" className="visually-hidden">
+                  Rechercher un artisan
+                </label>
+
+                <div className="search-form__wrapper">
+                  <input
+                    id="artisan-search"
+                    type="search"
+                    className="form-control"
+                    placeholder="Rechercher un artisan..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                  <button type="submit" className="search-form__button">
+                    🔍
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
     </header>
   )
 }

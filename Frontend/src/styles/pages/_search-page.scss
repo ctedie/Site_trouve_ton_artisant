@@ -1,0 +1,126 @@
+.search-page {
+  background-color: var(--color-white);
+}
+
+.search-page__hero {
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-soft) 0%,
+    rgba(241, 248, 252, 0.65) 100%
+  );
+  padding: 70px 0 50px;
+  border-bottom: 1px solid rgba(56, 64, 80, 0.08);
+}
+
+.search-page__eyebrow {
+  margin-bottom: 0.6rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.search-page__title {
+  margin-bottom: 0.8rem;
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: var(--color-text-dark);
+}
+
+.search-page__intro {
+  max-width: 650px;
+  margin-bottom: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-text-dark);
+}
+
+.search-page__count {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background-color: var(--color-white);
+  color: var(--color-primary-dark);
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-soft);
+}
+
+.search-page__content {
+  padding: 70px 0 90px;
+}
+
+.search-page__state {
+  text-align: center;
+  color: var(--color-text-dark);
+  font-size: 1rem;
+}
+
+.search-page__state--error {
+  color: var(--color-accent-red);
+  font-weight: 600;
+}
+
+.search-page__empty {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--color-bg-soft);
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.search-page__empty h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+.search-page__empty p {
+  margin-bottom: 0;
+  color: var(--color-text-dark);
+  line-height: 1.6;
+}
+
+@media (max-width: 991px) {
+  .search-page__hero {
+    padding: 60px 0 45px;
+  }
+
+  .search-page__title {
+    font-size: 2rem;
+  }
+
+  .search-page__content {
+    padding: 60px 0 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .search-page__hero {
+    padding: 50px 0 35px;
+  }
+
+  .search-page__title {
+    font-size: 1.7rem;
+  }
+
+  .search-page__intro {
+    font-size: 0.95rem;
+  }
+
+  .search-page__content {
+    padding: 50px 0 70px;
+  }
+
+  .search-page__empty {
+    padding: 1.5rem;
+    border-radius: 18px;
+  }
+}

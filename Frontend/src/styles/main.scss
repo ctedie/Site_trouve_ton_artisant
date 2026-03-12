@@ -1,104 +1,17 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #222222;
-}
+@use './base/variables';
+@use './base/global';
+@use './base/buttons';
 
-a {
-  text-decoration: none;
-}
+@use './layout/header';
+@use './layout/footer';
 
-.site-wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+@use './components/hero';
+@use './components/steps-section';
+@use './components/artisan-card';
+@use './components/rating-stars';
 
-.site-main {
-  flex: 1;
-}
-
-.site-header {
-  background-color: #ffffff;
-}
-
-.site-brand {
-  text-decoration: none;
-}
-
-.site-brand__title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.site-brand__subtitle {
-  font-size: 0.95rem;
-  color: #666666;
-  margin-top: 0.25rem;
-}
-
-.category-nav a {
-  white-space: nowrap;
-}
-
-.site-footer {
-  background-color: #f8f9fa;
-}
-
-.site-footer a {
-  color: inherit;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
-
-.hero-section {
-  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
-}
-
-.hero-section__panel {
-  background-color: #ffffff;
-  border: 1px solid #e9ecef;
-}
-
-.step-card__number {
-  width: 48px;
-  height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  font-weight: 700;
-  background-color: #0d6efd;
-  color: #ffffff;
-}
-
-.artisan-card .card-text {
-  color: #555555;
-}
-
-.rating-stars {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.1rem;
-  font-size: 1rem;
-}
-
-.rating-stars__star {
-  color: #f4b400;
-}
-
-.artisan-detail__image-wrapper {
-  background-color: #f8f9fa;
-  border-radius: 1rem;
-  overflow: hidden;
-}
-
-.artisan-detail__image {
-  width: 100%;
-  max-height: 360px;
-  object-fit: cover;
-}
+@use './pages/artisan-detail';
+@use './pages/category-page';
+@use './pages/not-found-page';
+@use './pages/search-page';
+@use './pages/legal-page';
