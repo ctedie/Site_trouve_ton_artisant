@@ -44,31 +44,63 @@ function SearchPage() {
         description={`Résultats de recherche pour ${query} sur Trouve ton artisan.`}
       />
 
-      <div className="container py-5">
-        <header className="mb-4">
-          <h1 className="fw-bold">Résultats de recherche</h1>
-          <p className="mb-0">
-            Recherche en cours pour : <strong>{query}</strong>
-          </p>
-        </header>
+      <section className="search-page">
+        <div className="search-page__hero">
+          <div className="container">
+            <p className="search-page__eyebrow">Recherche</p>
+            <h1 className="search-page__title">Résultats pour « {query} »</h1>
+            <p className="search-page__intro">
+              Retrouvez les artisans correspondant à votre recherche.
+            </p>
 
-        {loading && <p>Chargement des résultats...</p>}
-        {error && <p>Une erreur est survenue lors de la recherche.</p>}
-
-        {!loading && !error && artisans.length === 0 && (
-          <p>Aucun artisan trouvé pour cette recherche.</p>
-        )}
-
-        {!loading && !error && artisans.length > 0 && (
-          <div className="row g-4">
-            {artisans.map((artisan) => (
-              <div key={artisan.id} className="col-12 col-md-6 col-lg-4">
-                <ArtisanCard artisan={artisan} />
-              </div>
-            ))}
+            {!loading && !error && query.trim() && (
+              <p className="search-page__count">
+                {artisans.length} résultat{artisans.length > 1 ? 's' : ''}
+              </p>
+            )}
           </div>
-        )}
-      </div>
+        </div>
+
+        <div className="container search-page__content">
+          {!query.trim() && (
+            <div className="search-page__empty">
+              <h2>Aucune recherche saisie</h2>
+              <p>
+                Utilisez la barre de recherche du header pour rechercher un artisan.
+              </p>
+            </div>
+          )}
+
+          {loading && query.trim() && (
+            <p className="search-page__state">Chargement des résultats...</p>
+          )}
+
+          {error && (
+            <p className="search-page__state search-page__state--error">
+              Une erreur est survenue lors de la recherche.
+            </p>
+          )}
+
+          {!loading && !error && query.trim() && artisans.length === 0 && (
+            <div className="search-page__empty">
+              <h2>Aucun artisan trouvé</h2>
+              <p>
+                Aucun artisan ne correspond à votre recherche pour le moment.
+              </p>
+            </div>
+          )}
+
+          {!loading && !error && artisans.length > 0 && (
+            <div className="row g-4 justify-content-center">
+              {artisans.map((artisan) => (
+                <div key={artisan.id} className="col-12 col-md-6 col-lg-4 d-flex">
+                  <ArtisanCard artisan={artisan} />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
     </>
   )
 }
