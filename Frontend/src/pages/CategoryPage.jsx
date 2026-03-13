@@ -21,41 +21,42 @@ function CategoryPage() {
   const [artisans, setArtisans] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [heroImage, setHeroImage] = useState('')
 
   const categoryLabel = formatCategoryLabel(slug)
 
   const categoryContent = {
-  batiment: {
-    title: 'Les artisans du bâtiment',
-    intro:
-      'Maçons, couvreurs, plombiers ou électriciens : trouvez un professionnel qualifié pour vos travaux.',
-    image: '/images/categories/batiment-hero.png'
-  },
-  services: {
-    title: 'Les artisans de service',
-    intro:
-      'Découvrez des professionnels de confiance pour répondre à vos besoins du quotidien.',
-    image: '/images/categories/services-hero.png'
-  },
-  fabrication: {
-    title: 'Les artisans de fabrication',
-    intro:
-      'Menuiserie, ferronnerie, création sur mesure : explorez les savoir-faire artisanaux de la région.',
-    image: '/images/categories/fabrication-hero.png'
-  },
-  alimentation: {
-    title: 'Les artisans de l’alimentation',
-    intro:
-      'Boulangeries, pâtisseries et métiers de bouche : trouvez les artisans gourmands près de chez vous.',
-    image: '/images/categories/alimentation-hero.png'
+    batiment: {
+      title: 'Les artisans du bâtiment',
+      intro:
+        'Maçons, couvreurs, plombiers ou électriciens : trouvez un professionnel qualifié pour vos travaux.',
+      image: '/images/categories/batiment-hero.png'
+    },
+    services: {
+      title: 'Les artisans de service',
+      intro:
+        'Découvrez des professionnels de confiance pour répondre à vos besoins du quotidien.',
+      image: '/images/categories/services-hero.png'
+    },
+    fabrication: {
+      title: 'Les artisans de fabrication',
+      intro:
+        'Menuiserie, ferronnerie, création sur mesure : explorez les savoir-faire artisanaux de la région.',
+      image: '/images/categories/fabrication-hero.png'
+    },
+    alimentation: {
+      title: 'Les artisans de l’alimentation',
+      intro:
+        'Boulangeries, pâtisseries et métiers de bouche : trouvez les artisans gourmands près de chez vous.',
+      image: '/images/categories/alimentation-hero.png'
+    }
   }
-}
 
-const currentCategory = categoryContent[slug] || {
-  title: categoryLabel,
-  intro: `Retrouvez les artisans sélectionnés dans la catégorie ${categoryLabel.toLowerCase()}.`,
-  image: '/images/categories/default-hero.png'
-}
+  const currentCategory = categoryContent[slug] || {
+    title: categoryLabel,
+    intro: `Retrouvez les artisans sélectionnés dans la catégorie ${categoryLabel.toLowerCase()}.`,
+    image: '/images/categories/default-hero.png'
+  }
 
   useEffect(() => {
     async function loadArtisans() {
@@ -76,6 +77,20 @@ const currentCategory = categoryContent[slug] || {
     loadArtisans()
   }, [slug])
 
+  useEffect(() => {
+    const img = new Image()
+
+    img.src = currentCategory.image
+
+    img.onload = () => {
+      setHeroImage(currentCategory.image)
+    }
+
+    img.onerror = () => {
+      setHeroImage('/images/categories/default-hero.png')
+    }
+  }, [currentCategory.image])
+
   return (
     <>
       <Seo
@@ -84,10 +99,10 @@ const currentCategory = categoryContent[slug] || {
       />
 
       <section className="category-page">
-<div
-  className="category-page__hero category-page__hero--visual"
-  style={{ backgroundImage: `url(${currentCategory.image})` }}
->
+        <div
+          className="category-page__hero category-page__hero--visual"
+          style={{ backgroundImage: `url(${heroImage})` }}
+        >
           <div className="category-page__hero-overlay">
             <div className="container">
               <p className="category-page__eyebrow">Catégorie</p>
