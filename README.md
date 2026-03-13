@@ -44,14 +44,22 @@ Les données sont récupérées dynamiquement depuis une **API Node.js** connect
 ---
 
 ## 📁 Structure du projet
-```text
+
+
 trouve-ton-artisan/
+
 ├── frontend/        # Application React
+
 ├── backend/         # API Node.js / Express
+
 ├── database/
-│   ├── create.sql   # Script de création de la base de données
-│   └── seed.sql     # Script d’insertion des données
+
+│                       ├── create.sql       # Script de création de la base de données
+
+│                       └── seed.sql         # Script d’insertion des données
+
 └── README.md
+
 
 ## ⚙️ Prérequis
 
