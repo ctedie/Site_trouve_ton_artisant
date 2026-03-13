@@ -111,11 +111,21 @@ npm install
 Créer un fichier `.env` à la racine du dossier `backend` avec le contenu suivant :
 
 ```env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=motdepasse
-DB_NAME=trouve_ton_artisan
 PORT=3000
+
+DB_HOST=gondola.proxy.rlwy.net
+DB_PORT=21505
+DB_NAME=railway
+DB_USER=root
+DB_PASSWORD=girwmeFdvsbJVFLrNswgKGUwSIfTSvnp
+
+FRONTEND_URL=frontend-production-be33.up.railway.app
+
+SMTP_HOST=smtp.mailtrap.io
+SMTP_PORT=2525
+SMTP_USER=99fd063977bf4e
+SMTP_PASSWORD=9a809125c4d274
+MAIL_FROM=no-reply@trouvetonartisan.fr
 ```
 
 Lancer l’API :
@@ -197,14 +207,14 @@ Les bonnes pratiques suivantes ont été mises en place :
 Les maquettes ont été réalisées avec **Figma**.
 
 Lien vers le prototype :  
-`(Ajouter ici le lien Figma)`
+https://www.figma.com/design/7Jumr5m7cWeCMzYg9HpqSl/Trouve-ton-artisant?node-id=3-170&m=dev&t=HbGwqhFzrrhLmsP2-1
 
 ---
 
 ## 🌍 Déploiement
 
 Lien vers le site en ligne :  
-`(Ajouter ici l’URL du site déployé)`
+https://enchanting-intuition-production.up.railway.app/
 
 ---
 
