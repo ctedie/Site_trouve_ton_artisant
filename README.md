@@ -45,21 +45,17 @@ Les données sont récupérées dynamiquement depuis une **API Node.js** connect
 
 ## 📁 Structure du projet
 
-
+```text
 trouve-ton-artisan/
-
 ├── frontend/        # Application React
-
 ├── backend/         # API Node.js / Express
-
 ├── database/
-
-│                       ├── create.sql       # Script de création de la base de données
-
-│                       └── seed.sql         # Script d’insertion des données
-
+│   ├── create.sql   # Script création base de données
+│   └── seed.sql     # Script insertion des données
 └── README.md
+```
 
+---
 
 ## ⚙️ Prérequis
 
@@ -79,6 +75,9 @@ Avant d’installer le projet, vous devez disposer de :
 ```bash
 git clone https://github.com/VOTRE-USERNAME/trouve-ton-artisan.git
 cd trouve-ton-artisan
+```
+
+---
 
 ## 🗄 Configuration de la base de données
 
@@ -86,6 +85,8 @@ Créer une base de données MySQL :
 
 ```sql
 CREATE DATABASE trouve_ton_artisan;
+```
+
 Puis exécuter les scripts suivants :
 
 - `database/create.sql`
@@ -99,65 +100,7 @@ Se placer dans le dossier backend :
 
 ```bash
 cd backend
-
-Installer les dépendances :
-
-```bash
-npm install
-
-Créer un fichier `.env` à la racine du dossier `backend` avec le contenu suivant :
-
-```env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=motdepasse
-DB_NAME=trouve_ton_artisan
-PORT=3000
-
-Lancer l’API :
-
-```bash
-npm run dev
-
-Le serveur démarre sur :
-
-`http://localhost:3000`
-
----
-
-## 💻 Installation et lancement du frontend
-
-Se placer dans le dossier frontend :
-
-```bash
-cd frontend
-
-Créer un fichier `.env` à la racine du dossier `backend` avec le contenu suivant :
-
-```env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=motdepasse
-DB_NAME=trouve_ton_artisan
-PORT=3000
-
-Lancer l’API :
-
-```bash
-npm run dev
-
-Le serveur démarre sur :
-
-`http://localhost:3000`
-
----
-
-## 💻 Installation et lancement du frontend
-
-Se placer dans le dossier frontend :
-
-```bash
-cd frontend
+```
 
 Installer les dépendances :
 
